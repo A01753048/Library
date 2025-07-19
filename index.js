@@ -15,7 +15,7 @@ let formRead = document.getElementById("read");
 let modalCancel = document.getElementById("modal-cancel");
 let submitButton = document.getElementById("submit-btn");
 
-const myLibrary = [];
+let myLibrary = [];
 
 function Book(title, author, pages, read) {
     if (!new.target) {
@@ -40,21 +40,29 @@ function addBookToLibrary(title, author, pages, read)  {
 
 function displayBooks() {
     cardsContainer.innerHTML = "";
+
+    if (myLibrary.length === 0) {
+        cardsContainer.insertAdjacentHTML("beforeend", `
+            <div id="no-cards">
+                <p>Lets add some books!</p>
+            </div>
+        `);
+
+        return;
+    }
+
     for (let book of myLibrary) {
         cardsContainer.insertAdjacentHTML("beforeend", `
-        <div class="card">
+        <div class="card" data-id="${book.id}">
                     <p class="book-title">${book.title}</p>
                     <p class="book-author">by ${book.author}</p>
                     <div class="card-space"></div>
                     <p class="book-pages">${book.pages} ${(book.pages === "1") ? "page" : "pages"}</p>
                     <p class="read-book">${(book.read) ? "Read" : "Not yet Read"}</p>
+                    <img src="assets/noun-trash-7960688.svg" alt="remove book" class="remove-book-button" onclick="removeBook(this.parentElement.getAttribute('data-id'))">
                 </div>
         `);
     }
-}
-
-function addBook() {
-
 }
 
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, false);
@@ -66,7 +74,7 @@ addBookBtn.addEventListener("click", () => {
 });
 
 modalCancel.addEventListener("click", () => {
-    dialogElement.close();
+    dialogElement.close("");
     modalForm.reset();
 });
 
@@ -90,3 +98,11 @@ dialogElement.addEventListener("close", () => {
         modalForm.reset();
     }
 });
+
+function removeBook(bookID) {
+    myLibrary = myLibrary.filter((currBook, index, arr) => {
+        return currBook.id !== bookID;
+    });
+
+    displayBooks();
+}

@@ -1,0 +1,167 @@
+*,
+*::before,
+*::after,
+*:before,
+*:after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --shadow-color: #9d9d9d;
+    --background-color: #dedede;
+    --main-background-color: white;
+    --card-width: 300px;
+    --checkbox-color: green;
+}
+
+html {
+    background-color: var(--background-color);
+}
+
+main {
+    background-color: var(--background-color);
+    height: 100vh;
+}
+
+#top {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px var(--shadow-color);
+    background-color: var(--main-background-color);
+    height: 120px;
+
+    & > img {
+        height: 150px;
+    }
+
+}
+
+#actions {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.action-button {
+    width: 100px;
+    height: 50px;
+    border-radius: 15px;
+    border: 1px solid grey;
+    box-shadow: 2px 2px var(--shadow-color);
+    background-color: var(--main-background-color);
+}
+
+
+#cards {
+    padding: 20px;
+    margin: 0 auto;
+}
+
+#cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, var(--card-width));
+    gap: 30px;
+}
+
+.card {
+    background-color: var(--main-background-color);
+    padding: 20px;
+    width: var(--card-width);
+    box-shadow: 2px 2px var(--shadow-color);
+    height: 250px;
+}
+
+.book-title {
+    font-size: 20px;
+    font-weight: bold;
+    overflow: scroll;
+    word-break: break-word;
+}
+
+.book-author {
+    font-size: 13px;
+    font-weight: lighter;
+}
+
+.card-space {
+    height: 7px;
+}
+
+.book-pages {
+    font-size: 15px;
+    font-weight: normal;
+}
+
+#dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 270px;
+    padding: 20px;
+    border: none;
+    box-shadow: 4px 4px var(--shadow-color);
+
+    & > form {
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 15px;
+        justify-content: center;
+    }
+}
+
+#modal-top {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+
+    & > img {
+        height: 30px;
+    }
+}
+
+.form-pair {
+    width: 90%;
+    display: flex;
+    flex-flow: nowrap row;
+    justify-content: space-between;
+}
+
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: var(--main-background-color);
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid currentColor;
+    border-radius: 0.15em;
+    transform: translateY(-0.075em);
+    display: grid;
+    place-content: center;
+}
+
+input[type="checkbox"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--checkbox-color);
+}
+
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}

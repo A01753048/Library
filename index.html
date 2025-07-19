@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Library pro max</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main>
+        <section id="top">
+            <img src="assets/noun-book-7844355.svg" alt="Library logo">
+            <h1>Library Pro Max</h1>
+        </section>
+
+        <section id="actions">
+            <button class="action-button" id="add-book-btn">Add Book</button>
+        </section>
+
+        <section id="cards">
+            <div id="cards-container">
+                <div class="card">
+                    <p class="book-title">The Hobbitttttttttttttttttttttttttttttt</p>
+                    <p class="book-author">J.R.R. Tolkien</p>
+                    <div class="card-space"></div>
+                    <p class="book-pages">295</p>
+                    <p class="read-book">Read</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <dialog id="dialog">
+        <div id="modal-top">
+            <h3>Add Book</h3>
+            <img src="assets/noun-cross-7805725.svg" alt="cancel" id="modal-cancel">
+        </div>
+        <form method="dialog" id="modal-form">
+            <div class="form-pair">
+                <label for="title">Title:</label>
+                <input autofocus id="title" type="text" name="title" required>
+            </div>
+
+            <div class="form-pair">
+                <label for="author">Author:</label>
+                <input id="author" type="text" name="author" required>
+            </div>
+
+            <div class="form-pair">
+                <label for="pages">Pages:</label>
+                <input type="number" min="1" id="pages" name="pages" required>
+            </div>
+
+            <div class="form-pair">
+               <label for="read">Read?  </label>
+               <input type="checkbox" id="read" name="read">
+            </div>
+
+            <button id="submit-btn" type="submit">Ok</button>
+        </form>
+    </dialog>
+    <script src="index.js"></script>
+</body>
+</html>

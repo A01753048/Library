@@ -58,7 +58,10 @@ function displayBooks() {
                     <p class="book-author">by ${book.author}</p>
                     <div class="card-space"></div>
                     <p class="book-pages">${book.pages} ${(book.pages === "1") ? "page" : "pages"}</p>
-                    <p class="read-book">${(book.read) ? "Read" : "Not yet Read"}</p>
+                    <div class="read-book-container">
+                        <img src="${(book.read) ? 'assets/noun-book-tick-3740373.svg' : 'assets/noun-book-unread-3740441.svg'}" alt="Toggle book read status" onclick="toggleBookReadStatus(this.parentElement.parentElement.getAttribute('data-id'))">
+                        <p class="read-book">${(book.read) ? "Read" : "Not yet Read"}</p>
+                    </div>
                     <img src="assets/noun-trash-7960688.svg" alt="remove book" class="remove-book-button" onclick="removeBook(this.parentElement.getAttribute('data-id'))">
                 </div>
         `);
@@ -104,5 +107,15 @@ function removeBook(bookID) {
         return currBook.id !== bookID;
     });
 
+    displayBooks();
+}
+
+function toggleBookReadStatus(bookID) {
+    for (let book of myLibrary) {
+        if (book.id === bookID) {
+            book.read = !book.read;
+            break;
+        }
+    }
     displayBooks();
 }

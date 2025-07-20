@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 *,
 *::before,
 *::after,
@@ -18,6 +20,7 @@
 
 html {
     background-color: var(--background-color);
+    font-family: "Roboto", sans-serif;
 }
 
 main {
@@ -61,10 +64,21 @@ main {
     align-items: center;
     gap: 6px;
     font-size: 1.1em;
+    cursor: pointer;
 
     & > img {
         height: 25px;
     }
+}
+
+.action-button:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px var(--shadow-color);
+}
+
+.action-button:active {
+    transform: translate(2px, 2px);
+    box-shadow: none;
 }
 
 
@@ -91,24 +105,49 @@ main {
 }
 
 .book-title {
-    font-size: 20px;
+    font-size: 1.5em;
     font-weight: bold;
     overflow: scroll;
     word-break: break-word;
 }
 
 .book-author {
-    font-size: 13px;
+    font-size: 1em;
     font-weight: lighter;
 }
 
 .card-space {
-    height: 7px;
+    height: 17px;
 }
 
 .book-pages {
-    font-size: 15px;
+    font-size: 1em;
     font-weight: normal;
+}
+
+.read-book {
+    font-size: 1em;
+    padding-bottom: 5px;
+}
+
+.read-book-container {
+    margin-top: 5px;
+    gap: 5px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: left;
+    width: 53%;
+    align-items: center;
+
+    & > img {
+        height: 30px;
+        transition: background-color ease-in 100ms;
+    }
+
+    & > img:hover {
+        background-color: var(--background-color);
+
+    }
 }
 
 .remove-book-button {
@@ -191,6 +230,27 @@ input[type="checkbox"]::before {
 
 input[type="checkbox"]:checked::before {
     transform: scale(1);
+}
+
+#submit-btn {
+    border-radius: 15px;
+    border: 1px solid grey;
+    box-shadow: 2px 2px var(--shadow-color);
+    background-color: var(--main-background-color);
+    width: 70%;
+    height: 30px;
+    margin: 0 auto;
+}
+
+#submit-btn:hover {
+    cursor: pointer;
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px var(--shadow-color);
+}
+
+#submit-btn:active {
+    transform: translate(0, 0);
+    box-shadow: none;
 }
 
 #no-cards {
